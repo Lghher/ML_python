@@ -2,11 +2,14 @@
 import pandas as pd
 from sklearn import metrics
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import cross_val_score
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import  GradientBoostingClassifier
 data = pd.read_csv("http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/titanic.txt")
+print data
 # print data
 # data.to_csv(r"C:\Users\hanghang\Desktop\titanic.csv",index=None)
 # new_data = pd.read_csv(r"C:\Users\hanghang\Desktop\titanic.csv")
@@ -23,9 +26,14 @@ x = data[['pclass','age','sex']]
 y = data['survived']
 print x.info()
 print x
+#  ""和NA都是na（都可以用fillna）
 x['age'].fillna(x['age'].mean(),inplace=True)
 print x.info()
+# print "拆分数据前"
+# print x
 x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.25,random_state=66)
+# print "拆分数据后"
+# print x_train
 # print "x的训练数据"
 # print x_train
 vec = DictVectorizer(sparse=False)
@@ -56,6 +64,7 @@ print "混淆矩阵"
 print metrics.confusion_matrix(y_test,y_predict)
 
 DT = GradientBoostingClassifier()
+
 DT.fit(x_train,y_train)
 print "梯度提升树开始预测....................."
 y_predict = DT.predict(x_test)

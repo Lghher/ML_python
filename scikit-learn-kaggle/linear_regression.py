@@ -47,6 +47,8 @@ print "R-squared:",metrics.r2_score(y_test,sgdr_y_predict)
 print "mean squared error:",metrics.mean_squared_error(y_test,sgdr_y_predict)
 print "absolute error:",metrics.median_absolute_error(y_test,sgdr_y_predict )
 
+#同归同样有knn回归，书回归，支持向量机回归（不同的核函数）
+
 
 
 

@@ -18,3 +18,7 @@ print 'The accuracy of KNN classifier is',knnc.score(x_test,y_test)
 
 print metrics.classification_report(y_test,predict)
 print metrics.confusion_matrix(y_test,predict)
+data = 1
+# with    open(r"C:\Users\hanghang\Desktop\hh_practice.csv") as file:
+#     data = 2
+# print data
